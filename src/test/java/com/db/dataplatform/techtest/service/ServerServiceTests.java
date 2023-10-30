@@ -1,6 +1,7 @@
 package com.db.dataplatform.techtest.service;
 
 import com.db.dataplatform.techtest.server.api.model.DataEnvelope;
+import com.db.dataplatform.techtest.server.exception.HadoopClientException;
 import com.db.dataplatform.techtest.server.mapper.ServerMapperConfiguration;
 import com.db.dataplatform.techtest.server.persistence.model.DataBodyEntity;
 import com.db.dataplatform.techtest.server.persistence.model.DataHeaderEntity;
@@ -46,7 +47,7 @@ public class ServerServiceTests {
     }
 
     @Test
-    public void shouldSaveDataEnvelopeAsExpected() throws NoSuchAlgorithmException, IOException {
+    public void shouldSaveDataEnvelopeAsExpected() throws NoSuchAlgorithmException, IOException, HadoopClientException {
         boolean success = server.saveDataEnvelope(testDataEnvelope);
 
         assertThat(success).isTrue();

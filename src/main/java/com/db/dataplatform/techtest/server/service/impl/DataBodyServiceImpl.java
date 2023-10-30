@@ -22,12 +22,12 @@ public class DataBodyServiceImpl implements DataBodyService {
     }
 
     @Override
-    public List<DataBodyEntity> getDataByBlockType(BlockTypeEnum blockType) {
-        return null;
+    public List<DataBodyEntity> getDataByBlockType(String blockType) {
+        return dataStoreRepository.getDataByBlockType(blockType);
     }
 
     @Override
     public Optional<DataBodyEntity> getDataByBlockName(String blockName) {
-        return null;
+        return dataStoreRepository.getDataByBlockName(blockName);
     }
 }

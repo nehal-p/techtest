@@ -20,17 +20,12 @@ public class RestTemplateConfiguration {
     private final RestTemplateBuilder restTemplateBuilder;
 
     @Bean
-    public RestTemplate createRestTemplate(MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter,
-                                           StringHttpMessageConverter stringHttpMessageConverter) {
-
-        RestTemplate restTemplate = restTemplateBuilder.build();
-
+    public RestTemplate createRestTemplate(MappingJackson2HttpMessageConverter mappingJackson2HttpMessageConverter, StringHttpMessageConverter stringHttpMessageConverter) {
+        RestTemplate template = restTemplateBuilder.build();
         CloseableHttpClient client = HttpClients.createDefault();
-        RestTemplate template= new RestTemplate();
         template.setRequestFactory(new HttpComponentsClientHttpRequestFactory(client));
         template.setMessageConverters(Arrays.asList(mappingJackson2HttpMessageConverter, stringHttpMessageConverter));
-
-        return restTemplate;
+        return template;
     }
 
 }
